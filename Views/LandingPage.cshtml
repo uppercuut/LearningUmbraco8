@@ -1,0 +1,109 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.LandingPage>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@using System.Linq
+@using Umbraco.Web.Models
+@{
+	Layout = "masterPage.cshtml";
+}
+
+
+<html>
+<!-- Text between angle brackets is an HTML tag and is not displayed.
+Most tags, such as the HTML and /HTML tags that surround the contents of
+a page, come in pairs; some tags, like HR, for a horizontal rule, stand
+alone. Comments, such as the text you're reading, are not displayed when
+the Web page is shown. The information between the HEAD and /HEAD tags is
+not displayed. The information between the BODY and /BODY tags is displayed.-->
+<head>
+	<title>Umniah Website</title>
+</head>
+<!-- The information between the BODY and /BODY tags is displayed.-->
+<body>
+
+
+	mainCss-ar
+
+	<h1>@Model.Value("testingProp")</h1>
+
+	<h1>@Umbraco.GetDictionaryValue("NextBtn")</h1>
+
+	<h1 style="color:#@Model.Value("bodyTextColor")">@Model.Value("bodyText")</h1>
+
+
+	@Model.Value("rTEBodyText")
+
+
+	<p class="@Model.Value("cssClasses")">this is blue p tag</p>
+
+	<p class="@(string.Join(" ", Model.Value<IEnumerable<string>>("multiCssClasses")))">this is blue p tag</p>
+
+
+
+
+
+	@*.GetCropUrl("200X200")*@
+
+
+	<img src="@(Model.Value<IPublishedContent>("imagesrc")?.Url)" alt="@(Model.Value<IPublishedContent>("imagesrc")?.Name)" />
+
+
+	<ul>
+		@foreach (var item in Model.Children().ToList().Where(x => x.Url.Trim() != "#"))
+		{
+
+
+			<a href="@item.Url">@item.Name</a>
+
+		}
+
+
+
+	</ul>
+
+
+	<h1>slider</h1>
+
+	<div style="display:flex">
+
+		@if (Model.Value<IEnumerable<IPublishedElement>>("sliderLanding").Any())
+		{
+
+			foreach (var sliderIem in Model.Value<IEnumerable<IPublishedElement>>("sliderLanding"))
+			{
+				<div>
+					<p>@sliderIem.Value("desc")</p>
+
+					<img src="@(sliderIem.Value<IPublishedContent>("backGroundImage")?.Url)" />
+				</div>
+			}
+		}
+
+	</div>
+
+	<div><h1>Footer Urls</h1></div>
+	@if (Model.Value<IEnumerable<Link>>("footerUrls").Any())
+	{
+		<div style="display:flex;color:red">
+
+			@foreach (var link in Model.Value<IEnumerable<Link>>("footerUrls"))
+			{
+				<div style="margin:4px;"><a href="@link.Url" target="@link.Target">@link.Name</a> <br /></div>
+			}
+		</div>
+	}
+
+
+
+
+	<p>Improve your image by including an image. </p>
+	<p><img src="http://www.mygifs.com/CoverImage.gif" alt="A Great HTML Resource"></p>
+	<p>
+		Add a link to your favorite <a href="https://www.dummies.com/">Web site</a>.
+		Break up your page with a horizontal rule or two.
+	</p>
+	<hr>
+	<p>Finally, link to <a href="page2.html">another page</a> in your own Web site.</p>
+	<!-- And add a copyright notice.-->
+	<p>&#169; Wiley Publishing, 2011</p>
+</body>
+</html>

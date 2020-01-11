@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@{
+	Layout = null;
+}
+
+@* the fun starts here *@
+<link href="~/css/BasicCss.css" rel="stylesheet" />
+<h1>this si the master page</h1>
+@*<link href="~/css/BasicCss-@(Umbraco.GetDictionaryValue("lang")).css" rel="stylesheet" />*@
+
+
+@RenderBody()
