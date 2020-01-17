@@ -2,7 +2,91 @@
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = null;
+	var loginStatusModel = Members.GetCurrentLoginStatus();
+
 }
 
 
-	<h1>Hello from Home</h1>
+<h1>Hello from Home</h1>
+
+
+
+@{
+
+
+	@*
+		Here you can specify a redirect URL for after logging out, by default umbraco will simply
+		redirect to the current page. Example to redirect to the home page:
+
+		logoutModel.RedirectUrl = "/";
+	*@
+}
+
+@if (loginStatusModel.IsLoggedIn)
+{
+	<textarea>
+
+
+
+  </textarea>
+
+	<button>Comment</button>
+}
+
+
+
+
+
+
+
+@Html.GetGridHtml(Model, "gridViewLayout")
+
+
+
+@if (Model.Value<IEnumerable<IPublishedContent>>("newestOffers").Any())
+{
+
+	<div>Slider</div>
+	<ul>
+		@foreach (var item in Model.Value<IEnumerable<IPublishedContent>>("newestOffers").ToList().Where(x => x.IsVisible()))
+		{
+
+			<div>
+				<a href="@item.Url">@item.Name</a>
+
+				<p>@item.Value("desc")</p>
+
+			</div>
+
+
+		}
+
+
+
+	</ul>
+	<div>Slider End </div>
+
+}
+
+
+
+
+
+
+<ul>
+	@foreach (var item in Model.Children().ToList().Where(x => x.IsVisible()))
+	{
+
+		<div>
+			<a href="@item.Url">@item.Name</a>
+
+			<p>@item.Value("desc")</p>
+
+		</div>
+
+
+	}
+
+
+
+</ul>

@@ -454,6 +454,18 @@
     <Content Include="Views\Business.cshtml" />
     <Content Include="Views\Home.cshtml" />
     <Content Include="Views\Personal.cshtml" />
+    <Content Include="Views\child.cshtml" />
+    <Content Include="Views\Faq.cshtml" />
+    <Content Include="Views\FAQs.cshtml" />
+    <Content Include="Views\LandingPageV2.cshtml" />
+    <Content Include="Views\ListOfNews.cshtml" />
+    <Content Include="Views\News.cshtml" />
+    <Content Include="Views\Offers.cshtml" />
+    <Content Include="Views\Partials\breadcrumb.cshtml" />
+    <Content Include="Views\Partials\Greeting.cshtml" />
+    <Content Include="Views\Partials\login.cshtml" />
+    <Content Include="Views\Partials\LoginStatus.cshtml" />
+    <Content Include="Views\MacroPartials\GreetingsView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

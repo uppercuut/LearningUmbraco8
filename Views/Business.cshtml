@@ -1,8 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Business>
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
-	Layout = null;
+	Layout = "masterPage.cshtml";
 }
 
 
+
+<link type="text/css" rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+
 <h1>Hello from Business</h1>
+
+@Html.Partial("Greeting")
+
+
+<i class="@Model.Value("font")"></i>
+
+
+@Umbraco.RenderMacro("GreetingMacro", new { name = "hello from macro" })

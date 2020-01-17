@@ -4,6 +4,11 @@
 @using Umbraco.Web.Models
 @{
 	Layout = "masterPage.cshtml";
+
+
+    var posts = Umbraco.Content(1099);
+
+
 }
 
 
@@ -19,11 +24,17 @@ not displayed. The information between the BODY and /BODY tags is displayed.-->
 </head>
 <!-- The information between the BODY and /BODY tags is displayed.-->
 <body>
+@Html.Partial("login")
+@Html.Partial("LoginStatus")
+	<h1>@posts.Value("targetEmail")</h1>
 
+	@Umbraco.RenderMacro("GreetingMacro", new { name = "hello from Landing Page" })
+
+	@Html.Partial("Greeting")
 
 	mainCss-ar
 
-	<h1>@Model.Value("testingProp")</h1>
+	<h1>@posts.Name</h1>
 
 	<h1>@Umbraco.GetDictionaryValue("NextBtn")</h1>
 
@@ -47,8 +58,9 @@ not displayed. The information between the BODY and /BODY tags is displayed.-->
 	<img src="@(Model.Value<IPublishedContent>("imagesrc")?.Url)" alt="@(Model.Value<IPublishedContent>("imagesrc")?.Name)" />
 
 
+	@*.Where(x => x.IsVisible()   && x.IsDocumentType("fAQs")*@
 	<ul>
-		@foreach (var item in Model.Children().ToList().Where(x => x.Url.Trim() != "#"))
+		@foreach (var item in Model.Children().ToList().Where(x => x.IsVisible()))
 		{
 
 
