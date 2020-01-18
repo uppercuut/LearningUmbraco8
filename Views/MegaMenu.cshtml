@@ -1,0 +1,22 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.MegaMenu>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = null;
+}
+
+
+<ul>
+	@foreach (var itemlvl2 in Model.Children())
+    {
+		<li>@itemlvl2.Name</li>
+
+		<ol>
+			@foreach (var itemlvl3 in itemlvl2.Children())
+            {
+				<li>@itemlvl3.Name</li>
+
+            }
+		</ol>
+
+    }
+</ul>
