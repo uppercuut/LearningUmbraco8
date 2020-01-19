@@ -7,5 +7,11 @@
 
 <h1>Contact us</h1>
 
+@{
 
-@Html.Action("index", "ContactUsSurface");
+	if (TempData["responseMsg"] != null)
+	{<h1>@TempData["responseMsg"]</h1>}
+else
+{
+	@Html.Action("index", "ContactUsSurface");
+}}

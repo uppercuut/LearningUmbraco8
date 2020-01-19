@@ -427,6 +427,7 @@
     <Content Include="css\BasicCss.css" />
     <Content Include="DataBaseScripts\Session1\LearningUmbraco8SessionOne.sql" />
     <Content Include="DataBaseScripts\Session2\UmbracoTrainingPart2.sql" />
+    <Content Include="DataBaseScripts\Session3\UmbracoTraningSession3.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.js" />
@@ -440,7 +441,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\Api\PersonApiController.cs" />
     <Compile Include="Controllers\ContactUsSurfaceController.cs" />
+    <Compile Include="Models\Api\MultiLangOffersDto.cs" />
+    <Compile Include="Models\Api\OffersDto.cs" />
     <Compile Include="Models\ContactUsModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
